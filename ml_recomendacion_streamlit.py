@@ -13,8 +13,9 @@ st.title("🎓 Recomendador de Plataformas Educativas")
 
 # Cargar datos
 def cargar_datos():
-    df = pd.read_csv("beneficiarios.csv", sep=None, engine="python")
-    df.columns = df.columns.str.replace('\ufeff', '', regex=False).str.strip()
+    """Carga el dataset de beneficiarios."""
+    df = pd.read_csv("beneficiarios.csv", sep=";", encoding="utf-8-sig")
+    df.columns = df.columns.str.strip()
     return df
 
 df = cargar_datos()
@@ -66,6 +67,7 @@ if st.button("Recomendar"):
     ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
     ax.legend(["Te recomendamos estas plataformas"])
     st.pyplot(fig)
+
 
 
 
